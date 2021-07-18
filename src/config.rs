@@ -5,7 +5,7 @@ use serde::Deserialize;
 
 const NAME: &str = "config.toml";
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct BlogConfig {
     // Site
     pub title: Option<String>,
@@ -18,17 +18,18 @@ pub struct BlogConfig {
     pub root: Option<String>,
     pub permalink: Option<String>,
     // Directory
-    pub source: Option<String>,
-    pub public_dir: Option<String>,
+    pub source_dir: Option<String>,
+    pub template_dir: Option<String>,
+    pub post_dir: Option<String>,
     // pub tag_dir: Option<String>,
     pub archive_dir: Option<String>,
     pub categories: Option<String>,
-    pub i18n_dir: Option<String>,
+    // pub i18n_dir: Option<String>,
     // Date / Time format
     pub data_format: Option<String>,
     pub time_format: Option<String>,
     // Pagination
-    pub per_page: Option<String>,
+    pub per_page: Option<u64>,
     pub pagination_dir: Option<String>,
     // Deploy
     pub deploys: Option<Vec<GitConfig>>,
@@ -37,7 +38,7 @@ pub struct BlogConfig {
     pub menu: Option<BTreeMap<String, String>>
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct GitConfig {
     pub repository: Option<String>,
     pub branch: Option<String>,

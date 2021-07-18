@@ -1,8 +1,10 @@
 use clap::{App, SubCommand};
 mod config;
-mod generate;
+mod site;
+mod blog;
+mod tpl;
 
-use generate::{*};
+use site::Site;
 use config::{*};
 
 fn main() {
@@ -22,7 +24,9 @@ fn main() {
 
     if let Some(_) = matches.subcommand_matches("g") {
         println!("generate");
-        Site::new(&blog_cfg);
+        let mut s = Site::new(blog_cfg);
+        s.parse();
+        s.print_categories();
     } else if let Some(_) = matches.subcommand_matches("s") {
         println!("serve")
     } else if let Some(_) = matches.subcommand_matches("d") {
