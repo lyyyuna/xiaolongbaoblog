@@ -2,6 +2,8 @@ title: SCons 用户指南第三章-让 SCons 编译更简单
 date: 2015-12-03 21:47:19
 categories: 杂
 tags: scons
+series: SCons 用户指南
+
 ---
 
 

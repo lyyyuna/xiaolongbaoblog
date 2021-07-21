@@ -3,6 +3,7 @@ date: 2015-10-17 15:35:56
 categories: 杂
 tags: 
 - scons
+series: SCons 用户指南
 ---
 
 本章会告诉你在你系统上安装 SCons 的基本步骤，或者是在没有预编译包的情况下自己编译 SCons (有些人会倾向于自己编译的灵活性)。在此之前，本章也会涉及到一些安装 Python 的步骤，因为这是 SCons 的依赖。幸运的是，安装 SCons 和 Python 非常简单，而且有些系统已经自带 Python 环境。

@@ -2,6 +2,8 @@ title: SCons 用户指南第四章 - 编译和链接库
 date: 2015-12-25 20:11:03
 categories: 杂
 tags: scons
+series: SCons 用户指南
+
 ---
 
 在大型软件工程中，经常将部分软件合并成一个或多个库文件。SCons 在创建和使用库文件方面非常简单易用。

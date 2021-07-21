@@ -3,6 +3,7 @@ date: 2018-04-28 11:33:31
 categories: 语言
 tags: 
 - Python
+summary: 如何用元类控制类的生成？
 ---
 
 ## 前言

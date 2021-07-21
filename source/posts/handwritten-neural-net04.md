@@ -7,6 +7,7 @@ tags:
 - neural network
 - Python
 series: 基于 BP 神经网络的识别手写体数字
+summary: 常见神经网络优化手段一览。
 ---
 
 

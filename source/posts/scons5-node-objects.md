@@ -2,6 +2,8 @@ title: SCons 用户指南第五章 - 节点对象
 date: 2016-01-03 07:33:47
 categories: 杂
 tags: scons
+series: SCons 用户指南
+
 ---
 
 SCons 在内部把文件和目录都表示成节点。灵活运用内部对象（非二进制文件），可以让你的 SConscript 脚本文件更容易移植且易读。

@@ -2,6 +2,8 @@ title: SCons 用户指南第二章-简单编译
 date: 2015-11-02 07:33:47
 categories: 杂
 tags: scons
+series: SCons 用户指南
+
 ---
 
 
