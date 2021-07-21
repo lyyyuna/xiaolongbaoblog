@@ -3,6 +3,8 @@ date: 2017-12-28 16:20:02
 categories: 语言
 tags: 
 - Python2.7源码
+series: Python 源码之旅
+
 ---
 
 ## Python 的字符串类型和对象

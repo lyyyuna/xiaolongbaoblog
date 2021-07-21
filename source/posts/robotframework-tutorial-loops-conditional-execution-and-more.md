@@ -2,6 +2,8 @@ title: Robot Framework 教程 - 循环，条件判断，字符串和列表（译
 date: 2016-05-28 09:05:09
 categories: 测试
 tags: robot framework
+series: Robot Framework 教程
+
 ---
 
 目前为止，[Robot Framework](http://robotframework.org/)教程一直关注于高阶抽象的概念，所以这次有必要介绍一下框架本身的基础概念。所有这些特性都直接来自于标准库，而本文的例子再安装额外的库。

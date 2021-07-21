@@ -3,6 +3,8 @@ date: 2018-01-01 16:20:02
 categories: 语言
 tags: 
 - Python3.x源码
+series: Python 源码之旅
+
 ---
 
 ## 建立环境

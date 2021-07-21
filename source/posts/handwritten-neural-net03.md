@@ -6,6 +6,7 @@ tags:
 - mnist
 - neural network
 - Python
+series: 基于 BP 神经网络的识别手写体数字
 ---
 
 <script type="text/x-mathjax-config">

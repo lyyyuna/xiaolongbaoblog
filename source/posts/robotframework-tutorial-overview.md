@@ -2,6 +2,7 @@ title: Robot Framework 教程 - 概览（译）
 date: 2016-01-07 20:33:01
 categories: 测试
 tags: robot framework
+series: Robot Framework 教程
 ---
 
 ## 前言

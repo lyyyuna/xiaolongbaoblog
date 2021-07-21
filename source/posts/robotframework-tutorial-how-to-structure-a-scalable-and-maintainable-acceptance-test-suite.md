@@ -2,6 +2,8 @@ title: Robot Framework 教程 - 如何组织一个可伸缩可维护的验收测
 date: 2016-05-15 10:56:18
 categories: 测试
 tags: robot framework
+series: Robot Framework 教程
+
 ---
 
 

@@ -5,6 +5,7 @@ categories: 数学
 tags: 
 - mnist
 - neural network
+series: 基于 BP 神经网络的识别手写体数字
 ---
 
 <script type="text/x-mathjax-config">

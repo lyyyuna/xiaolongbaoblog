@@ -2,6 +2,8 @@ title: Robot Framework 教程 - 一个完整的例子（译）
 date: 2016-04-09 14:50:08
 categories: 测试
 tags: robot framework
+series: Robot Framework 教程
+
 ---
 
 
