@@ -71,7 +71,7 @@ func (b *Blog) parseMetaData() {
 		log.Fatalf("fail to parse: %v blog meta", b.filePath)
 	}
 
-	if meta.Category == "" || meta.DateS == "" || meta.Title == "" {
+	if meta.DateS == "" || meta.Title == "" {
 		log.Fatalf("some blog meta is empty: %v", b.filePath)
 	}
 
