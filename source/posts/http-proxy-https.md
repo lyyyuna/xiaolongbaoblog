@@ -16,7 +16,7 @@ tags:
 RFC 为这类代理给出了规范，[Tunneling TCP based protocols through Web proxy servers](https://tools.ietf.org/html/draft-luotonen-web-proxy-tunneling-01)。简单来讲就是通过 Web 代理服务器用隧道方式传输基于 TCP 的协议。HTTP 协议正文部分为客户端发送的原始 TCP 流量，代理发送给远端服务器后，将接收到的 TCP 流量原封不动返回给浏览器。
 
 下面这张图片来自于《HTTP 权威指南》，展示了 HTTP 隧道代理的原理。
-![HTTP 隧道](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201803/connect.png)
+![HTTP 隧道](/img/blog/201803/connect.png)
 
 浏览器首先发起 CONNECT 请求：
 
@@ -36,7 +36,7 @@ RFC 为这类代理给出了规范，[Tunneling TCP based protocols through Web 
 
 首先是来看正常的隧道代理示意图：
 
-![TLS 示意图 1](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201803/tls1.png)
+![TLS 示意图 1](/img/blog/201803/tls1.png)
 
 在如图红色的透传流量中，插入我们的**中间人**：
 
@@ -45,7 +45,7 @@ RFC 为这类代理给出了规范，[Tunneling TCP based protocols through Web 
 
 示意图如下：
 
-![TLS 示意图 2](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201803/tls2.png)
+![TLS 示意图 2](/img/blog/201803/tls2.png)
 
 由于中间人拿到了明文，也就能够继续收集 URL 及相关请求参数。
 

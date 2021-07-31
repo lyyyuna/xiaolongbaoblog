@@ -29,7 +29,7 @@ tags: Python script
 
 在 DNSPod 配置面板上：
 
-![DNSPod](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201601/dnspod.jpg)
+![DNSPod](/img/blog/201601/dnspod.jpg)
 
 大概需要等待 1-2 天，全球的解析才会恢复正常。而这时候，百度也应该能够正常抓取网页了。
 

@@ -22,7 +22,7 @@ MathJax.Hub.Config({
 
 人类视觉系统其实非常神奇，恐怕自己都没意识到，考虑以下的手写数字：
 
-![504192](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201605/504192.png)
+![504192](/img/blog/201605/504192.png)
 
 大部分人能够识别出数字为 504192。人脑每一半球都有着近 1.4 亿个神经元，之间有数以百亿的连接，能够进行复杂的图像处理。相当于每个人随身携带了一台超级计算机，数百万年的进化让该系统训练有素，能够适应并理解视觉世界。
 
@@ -30,7 +30,7 @@ MathJax.Hub.Config({
 
 神经网络算法则用另一种方法来解决问题。首先，会准备如下的训练数据，
 
-![训练数据](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201605/train_data.png)
+![训练数据](/img/blog/201605/train_data.png)
 
 然后，系统便以此为基础**学习**。换句话说，神经网络能够使用这些训练数据自动推导出识别手写数字的规则。并且，训练集越多，神经网络准确率越高。所以虽然上图只展示了 100 个数字，但如果有上百万个训练集的话，我们的手写数字识别器效果会更好。
 
@@ -44,7 +44,7 @@ MathJax.Hub.Config({
 
 感知器如何工作呢？一个感知器有多个二进制输入，$x_1, x_2, ...$，并只有一个二进制的输出：
 
-![感知器模型](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201605/perceptron.png)
+![感知器模型](/img/blog/201605/perceptron.png)
 
 这个例子中，感知器有三个输入，$x_1, x_2, x_3$。通常输入数目由需要而定。Rosenblatt 给每一个输入引入一个权重，$w_1, w_2, ...$，在输出增加一个阈值，超过阈值时才会输出 1，以下为输出与输入的关系：
 
@@ -69,7 +69,7 @@ output = \left\\{\begin{aligned}
 
 虽然感知器并不是人类决策系统的完整模型，但其能对各种条件做加权。而且似乎越复杂的网路越能做出微妙的决策：
 
-![复杂网络](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201605/complex_perceptron.png)
+![复杂网络](/img/blog/201605/complex_perceptron.png)
 
 在这个网络中，第一列感知器 - 我们也称作感知器第一层，只是简单地对输入做加权。而第二层感知器则对第一层决策的结果再一步加权，做出更复杂更抽象的决定。同样还可以增加神经网络的层数来作出更复杂的决定。
 
@@ -90,7 +90,7 @@ output = \left\\{\begin{aligned}
 
 自学习的 idea 听起来太棒了。如何为神经网络设计算法呢？假设我们的神经网络全部由感知器构成，输入为手写体数字扫描图的每一个原始像素点。我们希望神经网络能够自调整权重和偏移值，从而能对手写数字准确分类。为了解自学习过程，我们来做一个思想实验，假设我们在权重或偏移做一个小的改变，我们期望输出也会有相应小的变化：
 
-![神经网络](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201605/neural_net.png)
+![神经网络](/img/blog/201605/neural_net.png)
 
 比如神经网络错误地将数字 9 认为为数字 8，我们就可以对参数做微调（可能某个人写的 9 像 8），修正输出，不断重复上述过程，从而使输出符合我们的预期。
 
@@ -100,7 +100,7 @@ output = \left\\{\begin{aligned}
 
 好，让我来描述一下 sigmoid 神经元。其结构和感知器一样：
 
-![sigmoid 神经元](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201605/sigmoid.png)
+![sigmoid 神经元](/img/blog/201605/sigmoid.png)
 
 同样有输入 $x_1, x_2, ...$。不同是，输入可以取 0 到 1 之间的任何值，比如 0.638。sigmoid 对每一个输入有一个权重，$w_1, w_2, ...$，以及全局的偏移 $b$。但是 sigmoid 的输出不再限于 0 和 1，而是
 
@@ -120,9 +120,9 @@ output = \left\\{\begin{aligned}
 
 让我们看一下 sigmoid 函数和阶跃函数的图像：
 
-![sigmoid 函数](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201605/sigmoid_function.png)
+![sigmoid 函数](/img/blog/201605/sigmoid_function.png)
 
-![阶跃函数](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201605/step_function.png)
+![阶跃函数](/img/blog/201605/step_function.png)
 
 如果 $\sigma$ 是阶跃函数，那么 sigmoid 神经元就会退化成感知器，也就是说 sigmoid 神经元是平滑了的感知器。函数 $\sigma$ 的平滑度意味着，权重的微小变化 $\Delta w_j$ 和偏移的微小变化 $\Delta b$ 会在输出有相应的变化 $\Delta \mbox{output}$，运用泰勒公式可得：
 
@@ -140,11 +140,11 @@ output = \left\\{\begin{aligned}
 
 神经网络的结构：
 
-![神经网络的结构](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201605/net_structure.png)
+![神经网络的结构](/img/blog/201605/net_structure.png)
 
 如上所述，最左边的那一层被称做输入层，其中的神经元是输入神经元。最右或者输出层包含了输出神经元，该例中只有一个输出神经元。由于中间的神经元既不是输入也不是输出，中间那层被称为隐藏层。该例中只有一个隐藏层，有些神经网络有多个隐藏层，比如下面这张图中有两个隐藏层：
 
-![两个隐藏层](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201605/multi-layer_net_structure.png)
+![两个隐藏层](/img/blog/201605/multi-layer_net_structure.png)
 
 神经网络输入输出的设计通常很直接。比如手写数字，假设扫描图是 $28 \times 28=784$ 的灰度图像，输入就有 784 个神经元，输出就是每个数字的概率，一共 10 个输出神经元。
 

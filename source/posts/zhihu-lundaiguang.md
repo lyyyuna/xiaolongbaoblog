@@ -26,25 +26,25 @@ GitHub 上已经有一些知乎的第三方 API，如 [zhihu-py3](https://github
 
 以下是使用邮箱登陆时关键的两个请求。
 
-![登陆请求](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201602/login1.jpg)
+![登陆请求](/img/blog/201602/login1.jpg)
 
 以下为提交密码的请求，可以看到 POST 四个参数。
 
-![提交账号](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201602/login_post.jpg)
+![提交账号](/img/blog/201602/login_post.jpg)
 
 remember_me 为记住我，而 _xsrf 是在登陆页面 html 代码的隐藏参数。
 
-![隐藏参数](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201602/login_xsrf.jpg)
+![隐藏参数](/img/blog/201602/login_xsrf.jpg)
 
 在获取用户更多动态时需要将 _xsrf 作为参数之一提交。但是这里有个小坑，这里获取的 _xsrf 值并不等于获取动态时提交的 _xsrf。实际上经过测试，在登陆时也根本不需要提交这个 _xsrf 参数。个人猜测这是旧接口的遗留代码。
 
 那么之后获取更多动态时的 _xsrf 来自哪呢？它藏在 cookies 中。然而知乎的 cookies 并不是一次性获取完毕，如下图所示，登陆完毕只拿到了五个项。（事先把知乎的 cookies 清空）
 
-![第一次 cookies](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201602/cookies1.jpg)
+![第一次 cookies](/img/blog/201602/cookies1.jpg)
 
 而紧接着的第二个 GET 请求，才会拿到这个关键的 _xsrf cookies。
 
-![第二次 cookies](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201602/cookies2.jpg)
+![第二次 cookies](/img/blog/201602/cookies2.jpg)
 
 至此，登陆完毕。
 
@@ -62,7 +62,7 @@ remember_me 为记住我，而 _xsrf 是在登陆页面 html 代码的隐藏参�
 
 GET 上述的评论链接，会返回一个 json 数据。json['paging'] 中为评论总数、每页评论数、当前页。json['data'] 为评论数据。
 
-![评论 json 数据](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201602/comments.jpg)
+![评论 json 数据](/img/blog/201602/comments.jpg)
 
 ### 模拟点击“更多”，获取更多动态
 
@@ -96,4 +96,4 @@ monitor 任务中主要是打印队列中等待的链接个数。另外，大约
     
 一共找到 3669 个妹子图片，其中有效的估计为 85%。而且根据终端的打印过程粗略分析，轮子个在 2015.6 之前还是很正经的，专注于技术问题，而在 2015.6 之后大约有 3000 个妹子图。
 
-![妹子图](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201602/meizi.jpg)
+![妹子图](/img/blog/201602/meizi.jpg)

@@ -16,27 +16,27 @@ tags: Python script
 
 打开 http://cdcfan/ 便可见到登陆页面，登陆时只需输入自己英文名即可。
 
-![cdcfan 登陆页面](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201601/cdcfan_logon.jpg)
+![cdcfan 登陆页面](/img/blog/201601/cdcfan_logon.jpg)
 
 这里点击“进入”会发送 GET 请求，然后获得员工的各种信息，比如 ID，部门编号等。
 
-![cdcfan 登陆 GET](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201601/cdcfan_logon_get.jpg)
+![cdcfan 登陆 GET](/img/blog/201601/cdcfan_logon_get.jpg)
 
 登陆结果如下
 
-![cdcfan 登陆结果](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201601/cdcfan_ehuaile.jpg)
+![cdcfan 登陆结果](/img/blog/201601/cdcfan_ehuaile.jpg)
 
 当用户点击“下单”，这时候才会发送 POST 参数，请求参数主要为之前 GET 请求获得的部门号和员工 id。
 
-![cdcfan 下单请求](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201601/cdcfan_order-new.jpg)
+![cdcfan 下单请求](/img/blog/201601/cdcfan_order-new.jpg)
 
 请求会返回一个 json 数据。代表你是否成功订餐，还是已经订过餐。比如已经订过后，exceed_count 为 1，其余为 0.
 
-![cdcfan 下单结果](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201601/cdcfan_order_result.jpg)
+![cdcfan 下单结果](/img/blog/201601/cdcfan_order_result.jpg)
 
 而页面则显示
 
-![cdcfan 吃胖了](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201601/cdcfan_chipangle.jpg)
+![cdcfan 吃胖了](/img/blog/201601/cdcfan_chipangle.jpg)
 
 
 回过头来看登陆过程，如图 2，每一步 GET 请求，都会附上一个隐含参数 '_=1451880513702'，参数值会逐次递增 1。这个值有什么用我还没研究出来，用 Burp Suite 代理修改了也依然能返回正确结果。不过实际上不需要去分析这个值是由服务器还是客户端产生，因为最关键的下单 POST 请求与这个毫无关系。
@@ -137,12 +137,12 @@ crontab 修改为
 
 成功收到订餐成功的提示邮件
 
-![cdcfan 邮箱结果](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201601/cdcfan_success.jpg)
+![cdcfan 邮箱结果](/img/blog/201601/cdcfan_success.jpg)
 
 ## 彩蛋
 
 大概因为是安全公司的内部系统，所以在页面源码里看到了如下的注释
 
-![js 源码](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201601/cdcfan_hack.jpg)
+![js 源码](/img/blog/201601/cdcfan_hack.jpg)
 
 

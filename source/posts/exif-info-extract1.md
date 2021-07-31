@@ -17,13 +17,13 @@ tags:
 
 脚本运行后，读取结果如下
 
-![脚本读取的信息](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201601/exif_info3.jpg)
+![脚本读取的信息](/img/blog/201601/exif_info3.jpg)
 
 这里和 Windows 属性查看器读到的内容完全一致
 
-![图片信息1](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201601/exif_info1.jpg)
+![图片信息1](/img/blog/201601/exif_info1.jpg)
 
-![图片信息2](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201601/exif_info2.jpg)
+![图片信息2](/img/blog/201601/exif_info2.jpg)
 
 源码如下
 

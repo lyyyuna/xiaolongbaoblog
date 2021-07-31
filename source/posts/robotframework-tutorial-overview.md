@@ -27,7 +27,7 @@ series: Robot Framework 教程
 
 首先，我们需要测试脚本语言（取决于个人喜好，可以是 Shell, Perl, Java 等等）。此外我们还要准备一些基本的测试功能。然后访问数据库表，执行一个又一个脚本，测试结果最好以某种报告的形式返回。一旦脚本运行完毕，我们便可以开始核对检查工作。基本上，我们认为，一个典型的自动化测试框架应该提供上述的功能。
 
-![最简测试框架](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201601/GenericFrameworkView.png)
+![最简测试框架](/img/blog/201601/GenericFrameworkView.png)
 
 上图描述了一个非常基本的自动化测试框架。该框架有一个可执行测试的核心系统，可以输出一些报告，并提供接口来插入特定的测试功能。这个插入接口实现会非常简单。
 
@@ -47,11 +47,11 @@ series: Robot Framework 教程
 
 下面这张图用一个关键字例子描述了这三者的关系。
 
-![嵌套的关键字定义](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201601/Keywords.png)
+![嵌套的关键字定义](/img/blog/201601/Keywords.png)
 
 通常技术性关键字可以由任何编程语言来实现（好吧，不是真的）。其他的**关键字**则是由已存在的关键字组合而成。即使本文关注的是抽象的概念，我们还是来看一个具体的关键字定义：
 
-![GoogleS earch 关键字](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201601/KeywordGoogleSearch.png)
+![GoogleS earch 关键字](/img/blog/201601/KeywordGoogleSearch.png)
 
 这个例子表明， Google Search 这个关键字可以由 **Selenium Library** 库中的关键字来创建。好消息是已经有大量预定义的关键字，它们的集合称为**测试库**。
 
@@ -63,7 +63,7 @@ series: Robot Framework 教程
 
 除了[标准测试库](http://code.google.com/p/robotframework/wiki/TestLibraries)外，还有很多[额外的外部测试库](http://code.google.com/p/robotframework/wiki/TestLibraries#External_test_libraries)。它们通常是社区由不同的目的贡献的。在写特定测试用例的时候，你完全可以混用不同测试库的所有关键字。这意味着，在测试一个 web 应用时，可以用 **Selenium Library** 来与 web 前端交互，用 **Database Library** 来检测数据库中数据的正确性。理想情况下，完全不需要编程，只需组合库中的关键字来构成高级别关键字。
 
-![Robot Framework 概览](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201601/Overview_3.png)
+![Robot Framework 概览](/img/blog/201601/Overview_3.png)
 
 Robot Framework 除了核心功能和测试库外，还提供了一个 IDE (RIDE, Robot Integrated Development Environment)，用户可以在此编写和组织自己的测试用例和关键字。请注意，这个 RIDE 不是用来写技术性关键字的。技术性关键字取决于你的开发环境，比如 Eclipse 来开发 Java 写的关键字。
 
@@ -85,7 +85,7 @@ Robot Framework 自身和其核心库都是由 [Python](http://www.python.org/) 
 
 这引出了以下的安装堆栈：
 
-![Robot Framework 安装堆栈](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201601/InstallationStacks.png)
+![Robot Framework 安装堆栈](/img/blog/201601/InstallationStacks.png)
 
 Robot Framework 历史上是上图最左边的安装堆栈（在没有 RIDE 的情况下）。早期 Jython 的安装和支持欠佳。然而，现在 Java 已经支持的很好了，只有很少的缺陷。
 
@@ -99,7 +99,7 @@ Robot Framework 历史上是上图最左边的安装堆栈（在没有 RIDE 的�
 
 用 [Remote Libraries](http://code.google.com/p/robotframework/wiki/RemoteLibrary)，可以在其他机器中，用支持 [XML-RPC protocol](http://code.google.com/p/robotframework/wiki/RemoteLibrary) 的任何语言来编写测试库。
 
-![Remote Library 用法](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201601/RemoteLibrary.png)
+![Remote Library 用法](/img/blog/201601/RemoteLibrary.png)
 
 当在测试用例和资源文件中导入 Remote Library，它们用起来和普通的库没有区别。还有一个优点是，你也可以从 Remote Library 中获取帮助文件。如果对其实现感兴趣，可以看看 Database Library 的源码。需要指出的是，Remote Library 功能本身就是某些测试库的附加功能。
 

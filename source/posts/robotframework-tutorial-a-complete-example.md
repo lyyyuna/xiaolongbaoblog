@@ -44,7 +44,7 @@ series: Robot Framework 教程
 
 下图是测试框架的概览：
 
-![测试框架概览](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201604/Sample_Overview1.png)
+![测试框架概览](/img/blog/201604/Sample_Overview1.png)
 
 Selenium 需要 Selenium Server。这可以是 Robot Framework 所在的同一台机器，也可以是另一台可通过 TCP/IP 连接的服务器。Database Library Server 同理。虽然 DatabaseLibrary 可以本地使用，但那就意味着必须使用 Jython 来测试了。当然也可以在同一台机器上运行多个服务器。在一些正式的测试环境中，Robot Framework 和 CI (持续集成) 服务器经常部署在一起。然后，Selenium Server 通常跑在 Windows 服务器上，因为需要尽量模拟用户的使用场景。DatabaseLibrary Server 也可以部署在 CI 服务器上。
 
@@ -74,7 +74,7 @@ Selenium 需要 Selenium Server。这可以是 Robot Framework 所在的同一�
 
 这意味着最好以如下的目录树来组织你的测试工程。
 
-![测试工程目录树](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201604/Sample_DirectoryStructure2.png)
+![测试工程目录树](/img/blog/201604/Sample_DirectoryStructure2.png)
 
 定义一个通用的目录树结构有助于工程的复用。上述的目录结构对我来说工作的不错，我很早就开始用啦。
 
@@ -123,7 +123,7 @@ Selenium 需要 Selenium Server。这可以是 Robot Framework 所在的同一�
     
 来启动 RIDE。示意图如下，
 
-![测试工程目录树](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201604/RF_Ride.png)
+![测试工程目录树](/img/blog/201604/RF_Ride.png)
 
 Selenium Library 通常会包含一个对应的 Selenium Server JAR 包。为了独立使用不同目录下的 Selenium Server（比如其他小组成员安装的），你需要指定一个新的环境变量 RF_HOME，该变量指向 Python 的安装目录。该变量用于 selenium 服务器的本地启动脚本。
 
@@ -144,19 +144,19 @@ Selenium Library 通常会包含一个对应的 Selenium Server JAR 包。为了
 
 我们已经看到，Robot Framework 提供了众多功能和可能，即使同一件事也能用不同方法来完成。所以，在正式开始测试前做些基本分析是很有意义的。
 
-![在 RIDE 中编辑 Testsuites 和 Resource 文件](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201604/impression_ride1.png)
+![在 RIDE 中编辑 Testsuites 和 Resource 文件](/img/blog/201604/impression_ride1.png)
 
 使用 RIDE 使得实现测试功能更简单，尤其是那些非技术团队。简单意味着好维护（不只是 Robot Framework 测试哦 ;-)）。
 
-![Selenium Server 启动和运行](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201604/impression_seleniumserver.png)
+![Selenium Server 启动和运行](/img/blog/201604/impression_seleniumserver.png)
 
 顺便说一下，我还没有明确指出过，Robot Framework 的 **报表** 和 logging 非常棒，在 troubleshooting 时非常有用。
 
-![Robot Framework 的 log 文件，其中含有浏览器屏幕截图](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201604/impression_logfile.png)
+![Robot Framework 的 log 文件，其中含有浏览器屏幕截图](/img/blog/201604/impression_logfile.png)
 
 Robot Framework 在各种不同的测试库中提供大量的测试功能。一旦决定哪个测试库最好用时，大大加速了写测试的过程，提高了生产力。
 
-![Database Library Server 运行](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201604/impression_dbserver.png)
+![Database Library Server 运行](/img/blog/201604/impression_dbserver.png)
 
 尤其是在许多不同工程工作时，一个通用的工程结构和工具非常有用。在一些公共的资源文件中也需要实现一些产品相关的关键字。
 

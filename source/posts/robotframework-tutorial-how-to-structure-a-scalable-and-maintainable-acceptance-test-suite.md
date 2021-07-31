@@ -18,7 +18,7 @@ series: Robot Framework 教程
 稳定的部分是指测试框架本身和附加的库。测试用例也会尽可能作为不变的部分，除非需求改变没理由要改变它们。当然，这里允许添加新的测试用例。这里不经要问了，既然框架和测试用例都为稳定的部分，那什么是可变的部分呢？下图展示了一个可伸缩可维护的测试套件的结构。下面会对图中每一层作详细的解释。简单的说，如果系统的上下两头都需要稳定，那么可变的部分只有中间那层。
 
 
-![测试套件结构](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201605/SMAT_structure.png)
+![测试套件结构](/img/blog/201605/SMAT_structure.png)
 
 不同的颜色代表了 Robot Framework 中不同的文件：
 

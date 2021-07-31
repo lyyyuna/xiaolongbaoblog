@@ -157,4 +157,4 @@ BOOTSTRAP_NODES = (
 
 公网捕获，一小时 10000 个左右。
 
-![效果图](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201605/psb.jpg)
+![效果图](/img/blog/201605/psb.jpg)

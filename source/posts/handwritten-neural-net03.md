@@ -31,13 +31,13 @@ MathJax.Hub.Config({
 首先是明确的权重定义。使用 $w^l_{jk}$ 表示权重，代表连接  $(l-1)^{\rm th}$ 层第 $k^{\rm th}$ 个神经元 和 $l^{\rm th}$ 层第 $j^{\rm th}$ 个神经元的权重。举例来说，第二层第四个神经元和第三层第二个神经元之间的权重连接为
 
 
-![权重连接](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201606/tikz16.png)
+![权重连接](/img/blog/201606/tikz16.png)
 
 
 对于网络的偏移和激励我们将使用类似的符号。即 $b^l_j$ 是 $l^{\rm th}$ 层第 $j^{\rm th}$ 个神经元的偏移，$a^l_j$ 是 $l^{\rm th}$ 层第 $j^{\rm th}$ 个神经元的激励。如图所示：
 
 
-![偏移和激励](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201606/tikz17.png)
+![偏移和激励](/img/blog/201606/tikz17.png)
 
 
 有了这些记号，第 $l^{\rm th}$ 层第 $j^{\rm th}$ 个神经元的激励 $a^l_j$ 可以由第 $(l-1)^{\rm th}$ 层的所有激励求得：
@@ -90,7 +90,7 @@ MathJax.Hub.Config({
 第二个假设是误差可以写作神经网络输出的函数：
 
 
-![输出的函数](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201606/tikz18.png)
+![输出的函数](/img/blog/201606/tikz18.png)
 
 
 例如，二次代价函数就满足这一要求，单个训练数据 $x$ 的二次误差可以写成：
@@ -125,7 +125,7 @@ MathJax.Hub.Config({
 然后我们继续引入一个中间变量 $\delta^l_j$，我们称作第 $l$ 层第 $j$ 个神经元的误差。为了形象地理解误差到底是什么，假设在我们的神经网络中有一个小妖精：
 
 
-![网络中的小妖精](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201606/tikz19.png)
+![网络中的小妖精](/img/blog/201606/tikz19.png)
 
 
 这个妖精坐在 $l$ 层的第 $j$ 个神经元上。当输入到来时，它故意扰乱神经元的正常工作。它在神经元的加权输入中加入了一个小的变化 $\Delta z^l_j$，这样输出变成了 $\sigma(z^l_j+\Delta z^l_j)$。这个变化向后层神经网络传递，最终到输出层导致误差相应地改变为 $\frac{\partial C}{\partial z^l_j} \Delta z^l_j$。

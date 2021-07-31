@@ -8,7 +8,7 @@ tags: Exif
 
 在一些应用中上传图片可以显示拍摄地信息，这是因为使用带 GPS 功能的照相机或者是智能手机拍照后，会在图片中含有拍摄地的 GPS 信息。查看图片的详细信息之后，你会发现如下图所示记录了经度、纬度和海拔。
 
-![属性查看](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201511/1.png)
+![属性查看](/img/blog/201511/1.png)
 
 在 Windows 上，详细信息中的时间等可以直接修改，但唯独 GPS 信息是不可修改。本着研究探索的精神，我打算试试能不能直接修改二进制文件的方法来修改 GPS，将任意一幅图片修改为在北京拍摄。通过谷歌，了解到图片信息是由一种 Exchangeable image file format (Exif) 的格式来描述。网上我能查到的最新 specification 版本为 2012 年的 Exif v2.3 版本。[Exif 规格书链接](http://www.cipa.jp/std/documents/e/DC-008-2012_E.pdf)
 
@@ -24,7 +24,7 @@ Exif 规范其实包含了图片和音频两部分内容，这里我们只关心
 *   1st (Thumbnail) Image Data
 *   0th (Primary) Image Data
 
-![图片文件结构](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201511/2.png)
+![图片文件结构](/img/blog/201511/2.png)
 
 可以看到，IFD 记录了如图片长宽的信息，EXIF IFD 记录图片的拍摄信息，GPS IFD 则记录了 GPS。
 
@@ -107,65 +107,65 @@ GPSLongtitude
 
 查看一下二进制，
 
-![图片起始](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201511/3.png)
+![图片起始](/img/blog/201511/3.png)
 
 可以看到真的有 FFD8.H, FFE1.H, 后面的 45.H, 78.H, 69.H, 66.H，则正好是 'Exif' 的 ASCII 值。
 
 接下来 8 个字节，分别是 Byte Order(4D4D.H), 42(002A.H), 0th IFD Offset(00000008.H) 和 Number of Interoperability(000B.H)。让我们检察一下二进制文件。
 
-![APP1 Body](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201511/4.png)
+![APP1 Body](/img/blog/201511/4.png)
 
 接下来就是各种 IFD 的信息，我们需要先找到我们关心的 GPS IFD Pointer, 其 Tag = 8825.H。搜索一下，找到啦，在地址 0000008e.H 处。
 
-![GPS IFD Pointer](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201511/5.png)
+![GPS IFD Pointer](/img/blog/201511/5.png)
 
 ### 修改 GPS
 
 按照之前描述的 IFD 结构，我们将接下来的 10 个字节如图分割，可以看到其指出真正的 GPS 信息位于地址 03EC.H 处。由于这里的地址是相对于 File Header (也就是地址 000C.H)，所以真实的地址为 03EC.H + 000C.H = 03F8.H。
 
-![偏移地址](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201511/6.png)
+![偏移地址](/img/blog/201511/6.png)
 
 #### 第一个 IFD
 
-![GPSLatitudeRef](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201511/7.png)
+![GPSLatitudeRef](/img/blog/201511/7.png)
 
 开始两个字节为 GPS IFD Number，忽略。接下来的 4 个 IFD 就是我们需要修改的 GPS 信息。我们可以看出这是一个 GPSLatitudeRef，其中 4E000000.H 是 'N' 的 ASCII 码值，而且之前说过数据必须左对齐。这个我们不需要修改。
 
 #### 第二个 IFD
 
-![N](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201511/8.png)
+![N](/img/blog/201511/8.png)
 
 我们可以看出这是一个 GPSLatitude, 其指出真正 GPS 纬度信息存放在地址 049A.H + 000C.H = 04A6.H 处。
 
-![纬度](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201511/9.png)
+![纬度](/img/blog/201511/9.png)
 
 1F.H / 01.H = 31, 1D.H / 01.H = 29, 0C71.H / 64.H = 31。计算结果与 Windows 右键属性查看的完全一致。
 
-![原纬度值](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201511/10.png)
+![原纬度值](/img/blog/201511/10.png)
 
 谷歌搜索得知北京天安门位于北纬 39(27.H) 度 54(36.H) 分，那我们只需要修改对应位就行。
 
-![修改后纬度值](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201511/11.png)
+![修改后纬度值](/img/blog/201511/11.png)
 
 #### 第三/四个 IFD
 
 我们可以找到并修改经度信息。04B2.H + 0C.H = 04BE.H
 
-![原经度值](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201511/12.png)
+![原经度值](/img/blog/201511/12.png)
 
 北京天安门位于东经 116 度 23 分。
 
-![现经度值](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201511/13.png)
+![现经度值](/img/blog/201511/13.png)
 
 再用 Windows 右键属性查看一下。
 
-![属性查看](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201511/14.png)
+![属性查看](/img/blog/201511/14.png)
 
 已经在北京了。
 
 我们可以用 QQ 上传照片的功能验证一下。
 
-![QQ](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201511/15.png)
+![QQ](/img/blog/201511/15.png)
 
 确实在北京天安门附近。
 
@@ -177,4 +177,4 @@ GPSLongtitude
 
 最后是我用来实验的图片，摄于江南大学，2015.2.11，iphone 5c.
 
-![flower](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201511/IMG_0596.JPG)
+![flower](/img/blog/201511/IMG_0596.JPG)

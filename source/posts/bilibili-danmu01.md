@@ -147,4 +147,4 @@ B站直播弹幕是在 flash 里做的，所以浏览器的开发工具抓不到
 
 以下是我登陆 C菌 直播间抓取的弹幕消息。
 
-![效果图](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201603/bilibili.png)
+![效果图](/img/blog/201603/bilibili.png)

@@ -24,7 +24,7 @@ MathJax.Hub.Config({
 
 为了识别单个的数字，我们将使用三层神经网络：
 
-![三层神经网络](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201606/three-layers.png)
+![三层神经网络](/img/blog/201606/three-layers.png)
 
 输入层的神经元将对输入的像素值编码。神经网络的训练数据包含了 $28 \times 28$ 像素的扫描图，所以输入层有 $784 = 28 \times 28$ 个神经元。为了简便起见，上图中没有 $784$ 个输入神经元全部画出。每一个像素是灰度值，$0.0$ 代表白色，$1.0$ 代表黑色，两者之间的为逐渐变黑的灰色。
 
@@ -38,7 +38,7 @@ MathJax.Hub.Config({
 
 现在我们已经设计出神经网络的结构了，那如何识别出数字呢？第一件事是找到训练集。我们将使用 [MNIST 数据集](http://yann.lecun.com/exdb/mnist/)。MNIST 是经过修改的 [NIST](http://en.wikipedia.org/wiki/National_Institute_of_Standards_and_Technology) 数据子集，NIST 即 United States' National Institute of Standards and Technology。以下是部分数据：
 
-![部分数据](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201606/some-samples.png)
+![部分数据](/img/blog/201606/some-samples.png)
 
 图像已经被分割成单个的数字，而且没有噪点等，不需要做图像预处理。MNIST 数据集包括两部分，第一部分包含 60000 个图像，被用作训练数据。这些图像来自 250 个人，半数来自美国人口普查局的员工，另外半数是高中生。图片是 $28 \times 28$ 的灰度图。第二部分是 10000 张图片的测试集。我们将使用测试集来评估人工神经网络的学习效果。为了取得更好的测试效果，测试集来自另外 250 个人。这样，测试集和训练集的完全不同能够更好验证结果。
 
@@ -61,7 +61,7 @@ MathJax.Hub.Config({
 
 假设我们要最小化函数 $C(v), v=v_1,v_2$。该函数图像为：
 
-![函数图像](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201606/func_plot.png)
+![函数图像](/img/blog/201606/func_plot.png)
 
 
 我们要找到 $C$ 的全局最小值。一种做法是计算函数的导数，找到各个极值。课本上的导数很好求解。不幸的是，现实生活中，问题所代表的函数经常包含过多的变量。尤其是神经网络中，有数以万计的权值和偏移，不可能直接求取极值。
@@ -112,7 +112,7 @@ MathJax.Hub.Config({
 
 总结一下，首先重复计算梯度 $\nabla C$，然后向相反方向移动，画成图就是
 
-![梯度学习法](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201606/gradient.png)
+![梯度学习法](/img/blog/201606/gradient.png)
 
 
 

@@ -26,7 +26,7 @@ MathJax.Hub.Config({
 
 理想情况下我们的神经网络能够快速地从错误中学习。但实际过程中却可能学习缓慢。让我们看下面这个例子：
 
-![例子](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201606/tikz28.png)
+![例子](/img/blog/201606/tikz28.png)
 
 我们期望该神经元在输入 1 时输出 0。若神经元权重初始值为 0.6，偏移初始值为 0.9，则初始输出为 0.82，离预期输出还有一段距离。我们选择学习率 $\eta=0.15$，点击 **Run** 观察输出变化和二次代价函数的变化动画：
 
@@ -71,7 +71,7 @@ MathJax.Hub.Config({
 
 结合我们的 $\sigma$ 函数图像，即 sigmoid 函数图像：
 
-![sigmoid 函数](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201605/sigmoid_function.png)
+![sigmoid 函数](/img/blog/201605/sigmoid_function.png)
 
 当神经元的输出接近于 0 时，曲线变得很平缓，所以 $\sigma'(z)$ 的值很小，结合公式 (\ref{55}) 和 (\ref{56}) 可知，$\partial C/\partial w$ 和 $\partial C / \partial b$ 的值很小。
 
@@ -79,7 +79,7 @@ MathJax.Hub.Config({
 
 假设我们要训练如下的神经元，输入变量为 $x_1, x_2, ...$，对应的权重为 $w_1, w_2, ...$，偏移为 $b$：
 
-![多输入神经元](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201606/tikz29.png)
+![多输入神经元](/img/blog/201606/tikz29.png)
 
 
 其中输出是 $a=\sigma(z), z = \sum_j w_j x_j+b$。对此，我们定义该神经元的交叉熵代价函数为
@@ -206,23 +206,23 @@ net.SGD(training_data[:1000], 400, 10, 0.5, evaluation_data=test_data, monitor_e
 
 首先是代价函数随学习进度的变化图像：
 
-![代价函数变化](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201606/overfitting1.png)
+![代价函数变化](/img/blog/201606/overfitting1.png)
 
 看起来不错，代价不断减小，似乎说明我们的神经网络一直在进步。但是测试集上识别率却不是那么回事：
 
-![识别率变化](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201606/overfitting2.png)
+![识别率变化](/img/blog/201606/overfitting2.png)
 
 280 个 epoch 之后，识别率处于波动稳定状态，且远低于之前达到的 95% 识别率。训练数据的交叉熵和测试集的实际结果截然不同，出现了费米担心的问题。可以说，280 个 epoch 之后的学习完全无用，标准说法是**过拟合 overfitting**。
 
 让我们在做一点更直观的比较：训练集和测试集的交叉熵横向对比，及识别率横向对比。
 
-![测试集交叉熵](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201606/overfitting3.png)
+![测试集交叉熵](/img/blog/201606/overfitting3.png)
 
 交叉熵仅仅下降了 15 个 epoch，之后就一路飙高，持续恶化。这是我们模型过拟合的又一个标志。这里有个小疑问，epoch 15 和 epoch 280 哪个属于开始过拟合？从实践的角度看，我们真正的关心的是测试集（更接近真实情况）上的识别率，交叉熵只是算法的附带物，所以我们认为，epoch 280 之后，过拟合开始占据神经网络的学习过程。
 
 下面是训练集的识别率变化：
 
-![训练集识别率](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201606/overfitting4.png)
+![训练集识别率](/img/blog/201606/overfitting4.png)
 
 我们的模型能够 100% 地描述 1000 个训练图像，实际却不能很好地分类测试数字。
 
@@ -232,7 +232,7 @@ net.SGD(training_data[:1000], 400, 10, 0.5, evaluation_data=test_data, monitor_e
     
 我们一直在讨论 1000 个训练图片的过拟合问题，那 50000 个图片结果还是一样吗？这里给出结果：
 
-![扩大训练集](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201606/overfitting_full.png)
+![扩大训练集](/img/blog/201606/overfitting_full.png)
 
 可以看到，过拟合不再那么明显了，训练集的识别率只比测试集高 1.5% 左右。这也间接说明，大量训练数据下神经网络难以达到过拟合。不过训练集并不是那么容易获得的。
 
@@ -328,16 +328,16 @@ net.SGD(training_data[:1000], 400, 10, 0.5,
 
 训练集的交叉熵代价看来没什么问题：
 
-![训练集的代价](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201606/regularized1.png)
+![训练集的代价](/img/blog/201606/regularized1.png)
 
 
 但这次识别率却是一直在上升：
 
-![识别率上升](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201606/regularized2.png)
+![识别率上升](/img/blog/201606/regularized2.png)
 
 我们在试一下 50000 个训练数据的情况：
 
-![识别率](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201606/regularized_full.png)
+![识别率](/img/blog/201606/regularized_full.png)
 
 训练集和测试集的识别率只差 1% 左右，而正则化之前这一值是 1.5%。
 
@@ -360,15 +360,15 @@ net.SGD(training_data, 60, 10, 0.1, lmbda=5.0,
 
 让我们看一个经典的例子，假设要对下图所示的点建立一个模型：
 
-![很多点](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201606/tenpoints1.png)
+![很多点](/img/blog/201606/tenpoints1.png)
 
 数一下，有 10 个点，那可以用一个 9 次函数精确地描述它，$y = a_0 x^9 + a_1 x^8 + \ldots + a_9$：
 
-![九次函数](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201606/tenpoints2.png)
+![九次函数](/img/blog/201606/tenpoints2.png)
 
 如果允许一些误差，也可以使用一个简单的线性模型：
 
-![线性模型](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201606/tenpoints3.png)
+![线性模型](/img/blog/201606/tenpoints3.png)
 
 那么，哪个才是更好的模型？哪个才能描述还未出现的新点？实践表明，允许一定误差的模型更符合实际情况。现实世界伴随着大量不确定性，传感器采集的噪声和仪器本身的精度都会给训练集加入一定的**噪声**，这样，后一个模型便在预测新点时占据了优势。
 
@@ -392,11 +392,11 @@ net.SGD(training_data, 60, 10, 0.1, lmbda=5.0,
 
 我们在初始化权重和偏移时，选择高斯随机，均值为 0，标准差为 1。权重输入为 $z = \sum_j w_j x_j+b$，随着输入神经元数目的增加，标准差也随之增加，例如 1000 个神经元，其正太分布曲线为
 
-![正太分布](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201606/gauss1.png)
+![正太分布](/img/blog/201606/gauss1.png)
 
 曲线非常平坦，意味着 $z \gg 1, z \ll -1$ 的可能性都大大增加，输出 $\sigma(z)$ 极有可能饱和，出现过拟合的现象。解决的方法也非常简单，初始化时标准差选为 $1/\sqrt{n_{\rm in}}$。
 
-![改进的正太分布](https://raw.githubusercontent.com/lyyyuna/blog_img/master/blog/201606/gauss2.png)
+![改进的正太分布](/img/blog/201606/gauss2.png)
 
 
 ## 代码
