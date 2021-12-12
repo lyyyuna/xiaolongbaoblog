@@ -17,6 +17,9 @@
     img {page-break-inside: avoid;}
     div.nosplit {page-break-inside: avoid;}
   }
+  img {
+    width: 100%;
+  }
   img.center {
     display: block;
     margin: 0 auto;
