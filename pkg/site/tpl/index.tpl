@@ -244,7 +244,7 @@
   @media only screen and (min-width: 768px) and (max-width: 959px) { .main { width: 708px; } }
   @media only screen and (min-width: 640px) and (max-width: 767px) { .main { width: 580px; } }
   @media only screen and (min-width: 480px) and (max-width: 639px) { .main { width: 420px; } }
-  @media only screen and (max-width: 479px) { .main { width: 300px; } }
+  @media only screen and (max-width: 479px) { .main { width: 90%; } }
 
 </style>
 
