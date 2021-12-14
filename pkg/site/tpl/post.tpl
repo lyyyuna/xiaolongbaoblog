@@ -125,14 +125,6 @@
   .article h3 {
     font-size: 100%;
   }
-  pre {
-    margin-left: 4em;
-    margin-right: 4em;
-  }
-  pre, code {
-    font-family: monospace;
-    font-size: 100%;
-  }
   .footer {
     margin-top: 10px;
     font-size: 83%;
@@ -251,7 +243,9 @@
   @media only screen and (max-width: 479px) { .main { width: 300px; } }
 
 </style>
-
+<link rel="stylesheet" href="/libs/highlight/styles/a11y-dark.min.css">
+<script src="/libs/highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
 </head>
 <body>
     
