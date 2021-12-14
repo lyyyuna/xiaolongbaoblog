@@ -105,6 +105,7 @@
       font-size: 65%;
   }
   .normal {
+    text-align: center;
     font-size: medium;
     font-weight: normal;
   }
@@ -261,7 +262,7 @@
     <h1>{{.Title}}
     
     {{if .IsSeries}}<div class="subtitle">(<i><a href="/{{.SeriesDir}}/{{.Series}}">{{.Series}}</a>, Part {{.SeriesIndex}}</i>)</div>{{end}}
-    
+    </h1>
     <div class="normal">
       <div class="when">
         
@@ -269,8 +270,6 @@
           
       </div>
     </div>
-    </h1>
-
     {{.Body}}
   </div>
 </div>
