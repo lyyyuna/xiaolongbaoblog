@@ -14,4 +14,4 @@ Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
 
-Sitemap: http://www.lyyyuna.com/sitemap.xml
+Sitemap: https://www.lyyyuna.com/sitemap.xml
