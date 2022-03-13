@@ -12,7 +12,9 @@ Deep Discovery Email Inspector 组，QA/RD/SEG。
 
 ### 2019 - , 七牛云
 
-IOT 视频云 组，测试开发。
+视频直播云组，测试开发。
+
+云存储组，测试开发。
 
 ## 联系方式
 
