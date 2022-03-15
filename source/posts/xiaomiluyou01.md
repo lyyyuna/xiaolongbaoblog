@@ -50,6 +50,7 @@ tags: openwrt
 
 ssh 登陆后，首先查看系统的分区。
 
+```
     root@XiaoQiang:~# cat /proc/mtd
 
     dev:    size        erasesize   name
@@ -64,17 +65,22 @@ ssh 登陆后，首先查看系统的分区。
     mtd8:   00010000    00010000    "crash"
     mtd9:   00010000    00010000    "reserved"
     mtd10:  00010000    00010000    "Bdata"
+```
 
 可以将一些分区备份至 U 盘中。比如 Bdata 分区应该有 sn 信息，如果你对保修比较在意。
 
+```
     root@XiaoQiang:~# dd if=/dev/mtd1 of=/extdisks/sda1/xiaomi-bootloader.bin
+```
 
 ### 刷 BootLoader 
 
 我选择 hackpascal 开发的 [Breed](http://www.right.com.cn/forum/thread-161906-1-1.html) 作为我的 BootLoader，它支持 LAN 口，更方便。
 
+```
     root@XiaoQiang:~# wget -O /tmp/breed.bin http://breed.hackpascal.net/latest/breed-mt7620-xiaomi-mini.bin
     root@XiaoQiang:~# mtd -r write /tmp/breed.bin Bootloader
+```
 
 按照 [Breed](http://www.right.com.cn/forum/thread-161906-1-1.html) 的说明运行 BreedEnter.exe 后，重启路由器。这时路由器和 PC 通过网线直连。按照 hackpascal 所说，Breed 是带 dhcp 的，实际测试没有成功，我手动配置了电脑的 ip 为 192.168.1.2，打开网页 http://192.168.1.1。
 
@@ -84,12 +90,16 @@ ssh 登陆后，首先查看系统的分区。
 
 你也可以从后台
 
+```
     root@XiaoQiang:~# mtd -r write /tmp/PandoraBox-ralink-mt7620-xiaomi-mini-squashfs-sysupgrade-r1024-20150608.bin OS1
+```
 
 但有了 Breed 减少了你手抖刷错变砖的几率。
 
 重启完后，路由器就是 PandoraBox 系统了。分区的名称也变了。
-      _______________________________________________________________ 
+
+```
+    _______________________________________________________________ 
      |    ____                 _                 ____               |
      |   |  _ \ __ _ _ __   __| | ___  _ __ __ _| __ )  _____  __   |
      |   | |_) / _` | '_ \ / _` |/ _ \| '__/ _` |  _ \ / _ \ \/ /   |
@@ -116,3 +126,4 @@ ssh 登陆后，首先查看系统的分区。
     mtd9: 00010000 00010000 "culiang-crash"
     mtd10: 00010000 00010000 "culiang-reserved"
     mtd11: 00010000 00010000 "culiang-Bdata"
+```
