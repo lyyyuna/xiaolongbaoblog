@@ -1,6 +1,7 @@
 title: Ginkgo 测试框架实现解析
 date: 2022-05-12 12:19:02
 summary: 你是否好奇 Ginkgo 是如何实现 BDD 风格的测试框架呢？
+series: Ginkgo 使用笔记
 
 ---
 
