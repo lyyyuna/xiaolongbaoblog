@@ -255,7 +255,7 @@
     <ul class="toc">
       <li class="toc-header"><span class="toc-title">{{.Title}}</span>
         <span class="toc-subtitle">{{.SubTitle}},
-    by <a href="about" rel="author">{{.Author}}</a></li>
+    by <a href="{{.Url}}/about" rel="author">{{.Author}}</a></li>
       
       <li class="toc-head"><b>目录</b></li>
       

@@ -1,6 +1,7 @@
 title: Ginkgo Label 标签的使用教程
 date: 2023-12-24 10:04:00
 series: Ginkgo 使用笔记
+summary: 如何更有效的组织用例？
 
 ---
 

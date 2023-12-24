@@ -255,8 +255,8 @@
 <div class="header">
   <h3><a href="/">{{.SiteTitle}}</a></h3>
   <h4>{{.SiteSubTitle}},
-    by <a href="/about" rel="author">{{.Author}}</a> </h4>
-  <a class="rss" href="/feed.atom">RSS</a>
+    by <a href="{{.Url}}/about" rel="author">{{.Author}}</a> </h4>
+  <a class="rss" href="{{.Url}}/feed.atom">RSS</a>
 </div>
 
 <div class="main">

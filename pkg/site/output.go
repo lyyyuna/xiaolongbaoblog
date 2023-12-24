@@ -103,6 +103,7 @@ func (s *Site) outputPost(path string) {
 			MathJax      bool
 			SeriesDir    string
 			Analytics    string
+			Url          string
 		}{
 			SiteTitle:    s.conf.Title,
 			SiteSubTitle: s.conf.SubTitle,
@@ -116,6 +117,7 @@ func (s *Site) outputPost(path string) {
 			MathJax:      blog.Meta.MathJax,
 			SeriesDir:    s.conf.SeriesDir,
 			Analytics:    s.conf.Analytics,
+			Url:          s.conf.Url,
 		}
 
 		if err := postTmpl.Execute(postF, data); err != nil {
@@ -180,6 +182,7 @@ func (s *Site) outputSeries(path string) {
 			SeriesTitle  string
 			Blogs        []*Blog
 			Analytics    string
+			Url          string
 		}{
 			SiteTitle:    s.conf.Title,
 			SiteSubTitle: s.conf.SubTitle,
@@ -187,6 +190,7 @@ func (s *Site) outputSeries(path string) {
 			SeriesTitle:  k,
 			Blogs:        seriesBlogs,
 			Analytics:    s.conf.Analytics,
+			Url:          s.conf.Url,
 		}
 
 		if err := seriesTmpl.Execute(thisSeriesF, data); err != nil {
@@ -221,12 +225,14 @@ func (s *Site) outputAboutMe(path string) {
 		Author       string
 		Body         string
 		Analytics    string
+		Url          string
 	}{
 		SiteTitle:    s.conf.Title,
 		SiteSubTitle: s.conf.SubTitle,
 		Author:       s.conf.Author,
 		Body:         s.AboutMe.htmlContent,
 		Analytics:    s.conf.Analytics,
+		Url:          s.conf.Url,
 	}
 
 	if err := aboutTmpl.Execute(aboutF, data); err != nil {

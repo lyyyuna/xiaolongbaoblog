@@ -255,8 +255,8 @@
 <div class="header">
   <h3><a href="/">{{.SiteTitle}}</a></h3>
   <h4>{{.SiteSubTitle}},
-    by <a href="about" rel="author">{{.Author}}</a> </h4>
-  <a class="rss" href="/feed.atom">RSS</a>
+    by <a href="{{.Url}}/about" rel="author">{{.Author}}</a> </h4>
+  <a class="rss" href="{{.Url}}/feed.atom">RSS</a>
 </div>
 
 
@@ -265,7 +265,7 @@
     <ul class="toc">
       <li class="toc-header"><span class="toc-title">{{.SeriesTitle}} 系列</span>
         <span class="toc-subtitle">{{.SiteSubTitle}},
-    by <a href="about" rel="author">{{.Author}}</a></li>
+    by <a href="{{.Url}}/about" rel="author">{{.Author}}</a></li>
       
       {{range $blog := .Blogs}}
       <li><a href="{{$blog.Uri}}" class="">{{$blog.Meta.Title}}</a><span class="toc-when">{{$blog.Meta.DateT}}</span>
