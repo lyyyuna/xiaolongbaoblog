@@ -255,12 +255,12 @@
     <ul class="toc">
       <li class="toc-header"><span class="toc-title">{{.Title}}</span>
         <span class="toc-subtitle">{{.SubTitle}},
-    by <a href="{{.Url}}/about" rel="author">{{.Author}}</a></li>
+    by <a href="{{.Url}}/about/" rel="author">{{.Author}}</a></li>
       
       <li class="toc-head"><b>目录</b></li>
       
       {{range $blog := .Blogs}}
-      <li><a href="{{$blog.Uri}}" class="">{{$blog.Meta.Title}}</a> {{if $blog.Meta.IsSeries}}(<a href="/series/{{$blog.Meta.Series}}">{{$blog.Meta.Series}}</a>){{end}} <span class="toc-when">{{$blog.Meta.DateT}}</span>
+      <li><a href="{{$blog.Uri}}" class="">{{$blog.Meta.Title}}</a> {{if $blog.Meta.IsSeries}}(<a href="/series/{{$blog.Meta.Series}}/">{{$blog.Meta.Series}}</a>){{end}} <span class="toc-when">{{$blog.Meta.DateT}}</span>
       
         <div class="toc-summary">
         {{$blog.Meta.Summary}}

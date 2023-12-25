@@ -289,7 +289,7 @@ func (s *Site) outputAtom(path string) {
 }
 
 func (s *Site) outputSitemap(path string) {
-	sm := sitemap.New()
+	sm := sitemap.NewSitemapIndex()
 
 	for _, blog := range s.Blogs {
 		sm.Add(&sitemap.URL{

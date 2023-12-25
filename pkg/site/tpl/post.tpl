@@ -253,7 +253,7 @@
 <div class="header">
   <h3><a href="/">{{.SiteTitle}}</a></h3>
   <h4>{{.SiteSubTitle}},
-    by <a href="{{.Url}}/about" rel="author">{{.Author}}</a> </h4>
+    by <a href="{{.Url}}/about/" rel="author">{{.Author}}</a> </h4>
   <a class="rss" href="{{.Url}}/feed.atom">RSS</a>
 </div>
 
@@ -261,7 +261,7 @@
   <div class="article">
     <h1>{{.Title}}
     
-    {{if .IsSeries}}<div class="subtitle">(<i><a href="/{{.SeriesDir}}/{{.Series}}">{{.Series}}</a>, Part {{.SeriesIndex}}</i>)</div>{{end}}
+    {{if .IsSeries}}<div class="subtitle">(<i><a href="/{{.SeriesDir}}/{{.Series}}/">{{.Series}}</a>, Part {{.SeriesIndex}}</i>)</div>{{end}}
     </h1>
     <div class="normal">
       <div class="when">

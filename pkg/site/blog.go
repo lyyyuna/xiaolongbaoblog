@@ -90,7 +90,7 @@ func (b *Blog) parseMetaData() {
 	month := meta.Date.Month()
 	day := meta.Date.Day()
 	url := fmt.Sprintf("/%04d/%02d/%02d", year, month, day)
-	b.Uri = path.Join(url, b.Uri)
+	b.Uri = path.Join(url, b.Uri) + "/"
 
 	meta.DateT = fmt.Sprintf("%04d-%02d", year, month)
 
