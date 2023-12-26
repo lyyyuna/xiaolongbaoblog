@@ -288,8 +288,16 @@ func (s *Site) outputAtom(path string) {
 	log.Println("生成 atom xml")
 }
 
-func (s *Site) outputSitemap(path string) {
-	sm := sitemap.NewSitemapIndex()
+func (s *Site) outputSitemap(lpath string) {
+	sm := sitemap.New()
+
+	// add index
+	now := time.Now()
+	sm.Add(&sitemap.URL{
+		Loc:        s.conf.Url + "/",
+		LastMod:    &now,
+		ChangeFreq: sitemap.Weekly,
+	})
 
 	for _, blog := range s.Blogs {
 		sm.Add(&sitemap.URL{
@@ -299,7 +307,7 @@ func (s *Site) outputSitemap(path string) {
 		})
 	}
 
-	sitemapF, err := os.Create(filepath.Join(path, "sitemap.xml"))
+	sitemapF, err := os.Create(filepath.Join(lpath, "sitemap.xml"))
 	if err != nil {
 		log.Fatalf("fail to create sitemap xml: %v", err)
 	}
