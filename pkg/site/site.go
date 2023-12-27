@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"strings"
 	"sync"
 
 	"github.com/lyyyuna/xiaolongbaoblog/pkg/config"
@@ -38,8 +39,13 @@ func NewGenerate(conf *config.Config) *Site {
 			continue
 		}
 
-		wg.Add(1)
 		fname := post.Name()
+		// 如果名字是 -xxxx，跳过（草稿）
+		if strings.HasPrefix(fname, "-") {
+			continue
+		}
+
+		wg.Add(1)
 		ants.Submit(func() {
 			blog := NewBlog(filepath.Join(postDir, fname))
 			m.Lock()
