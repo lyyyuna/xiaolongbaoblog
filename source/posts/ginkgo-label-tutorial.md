@@ -48,7 +48,7 @@ Describe("上传", Label("integration", "storage"), func() {
 
 总结一下：
 1. 标签本质是一个字符串。
-2. 子节点会继承父节点定义的标签，即 It 会继承 `Context` 和 `Describe` 上的标签。
+2. 子节点会继承父节点定义的标签，即 `It` 会继承 `Context` 和 `Describe` 上的标签。
 3. 标签会自动去重，子节点不用担心标签重复。
 4. `Entry` 上也可以定义标签，不会被当作参数。
 
@@ -143,13 +143,13 @@ var ZCnNorthWest1 = Label("cn-northwest-1")
 var ZApSouthEast2 = Label("ap-southeast-2")
 ```
 
-但若每个用例都要标注**4个**标签，写起来比较繁琐，你可能会定义一个**全区域**标签来表示该用例可以在任意区域运行：
+但若每个用例都要标注4个标签，写起来比较繁琐，你可能会定义一个全区域标签来表示该用例可以在任意区域运行：
 
 ```go
 var ZAll = Label("cn-east-1", "cn-north-1", "cn-northwest-1", "ap-southeast-2")
 ```
 
-直接使用字符串会有**类型安全**问题，所以可以定义一个辅助函数来组合已有标签。
+直接使用字符串会有类型安全问题，所以可以定义一个辅助函数来组合已有标签。
 
 因为标签本质是 `Labels` 类型，只要定义一个 `combine([]Labels) Labels` 的函数即可：
 
@@ -198,7 +198,7 @@ func remove(all Labels, remove ...Labels) Labels {
 }
 
 // 只能在国内运行
-var ZChina = skip(ZAll, ZApSouthEast2)
+var ZChina = remove(ZAll, ZApSouthEast2)
 ```
 
 ### 自动过滤
