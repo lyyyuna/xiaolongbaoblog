@@ -287,6 +287,8 @@
     </div>
     {{.Body}}
   </div>
+
+  <div class="icp"> lyyyuna <a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow">沪ICP备2025110782号-1</a></div>
 </div>
 
 {{if .MathJax}}

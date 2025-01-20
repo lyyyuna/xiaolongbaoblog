@@ -6,6 +6,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+  .icp {
+    margin: 10px 0;
+    width: 100%;
+    height: 36px;
+    white-space: pre;
+    text-align: center;
+    color: gray;
+    z-index: 1000;
+  }
   body {
     padding: 0;
     margin: 0;
@@ -268,6 +277,8 @@
       </li>
       {{end}}      
     </ul>
+
+    <div class="icp"> lyyyuna <a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow">沪ICP备2025110782号-1</a></div>
     </div>
 
 {{.Analytics}}
