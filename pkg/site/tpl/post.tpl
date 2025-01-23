@@ -7,6 +7,15 @@
     
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+  .icp {
+    margin: 10px 0;
+    width: 100%;
+    height: 36px;
+    white-space: pre;
+    text-align: center;
+    color: gray;
+    z-index: 1000;
+  }
   body {
     padding: 0;
     margin: 0;
