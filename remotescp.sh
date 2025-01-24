@@ -2,7 +2,7 @@
 set -e
 set -o pipefail
 
-ssh lyyyuna "rm -rf /home/ubuntu/blog"
 rm -rf ./output
 go run . g
-scp -r ./output lyyyuna:/home/ubuntu/blog
+# scp -r ./output lyyyuna:/home/ubuntu/output
+rsync -avz --delete ./output lyyyuna:/home/ubuntu
