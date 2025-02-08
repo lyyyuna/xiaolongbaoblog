@@ -277,7 +277,7 @@
     by <a href="{{.Url}}/about/" rel="author">{{.Author}}</a></li>
       
       {{range $blog := .Blogs}}
-      <li><a href="{{$blog.Uri}}" class="">{{$blog.Meta.Title}}</a><span class="toc-when">{{$blog.Meta.DateT}}</span>
+      <li><a href="{{$blog.Uri}}" class="">{{$blog.Meta.Title}}</a> <span class="toc-when">{{$blog.Meta.DateT}}</span>
       
         <div class="toc-summary">
         {{$blog.Meta.Summary}}
