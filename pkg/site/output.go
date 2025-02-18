@@ -82,14 +82,32 @@ func (s *Site) outputPost(path string) {
 
 		var seriesIndex int
 		if blog.Meta.IsSeries {
-			for _, b := range s.Series[blog.Meta.Series] {
+			for _, b := range s.Series[blog.Meta.SeriesName] {
 				if b == blog {
 					break
 				}
 				seriesIndex++
 			}
 		}
-		seriesIndex = len(s.Series[blog.Meta.Series]) - seriesIndex
+		// s.Series[] 是按时间倒序
+		seriesIndexFrom1 := len(s.Series[blog.Meta.SeriesName]) - seriesIndex
+		nextPostUri := ""
+		nextPostTitle := ""
+		prevPostUri := ""
+		prevPostTitle := ""
+		if seriesIndex > 0 && seriesIndex < len(s.Series[blog.Meta.SeriesName])-1 {
+			nextPostUri = s.Series[blog.Meta.SeriesName][seriesIndex-1].Uri
+			nextPostTitle = s.Series[blog.Meta.SeriesName][seriesIndex-1].Meta.Title
+			prevPostUri = s.Series[blog.Meta.SeriesName][seriesIndex+1].Uri
+			prevPostTitle = s.Series[blog.Meta.SeriesName][seriesIndex+1].Meta.Title
+		} else if seriesIndex == 0 && seriesIndex < len(s.Series[blog.Meta.SeriesName])-1 {
+			prevPostUri = s.Series[blog.Meta.SeriesName][seriesIndex+1].Uri
+			prevPostTitle = s.Series[blog.Meta.SeriesName][seriesIndex+1].Meta.Title
+		} else if seriesIndex == len(s.Series[blog.Meta.SeriesName])-1 && seriesIndex > 0 {
+			nextPostUri = s.Series[blog.Meta.SeriesName][seriesIndex-1].Uri
+			nextPostTitle = s.Series[blog.Meta.SeriesName][seriesIndex-1].Meta.Title
+		}
+
 		data := struct {
 			SiteTitle    string
 			SiteSubTitle string
@@ -104,20 +122,30 @@ func (s *Site) outputPost(path string) {
 			SeriesDir    string
 			Analytics    string
 			Url          string
+
+			NextPostUri   string
+			NextPostTitle string
+			PrevPostUri   string
+			PrevPostTitle string
 		}{
 			SiteTitle:    s.conf.Title,
 			SiteSubTitle: s.conf.SubTitle,
 			Author:       s.conf.Author,
 			Title:        blog.Meta.Title,
 			IsSeries:     blog.Meta.IsSeries,
-			Series:       blog.Meta.Series,
+			Series:       blog.Meta.SeriesName,
 			When:         blog.Meta.DateT,
 			Body:         blog.htmlContent,
-			SeriesIndex:  seriesIndex,
+			SeriesIndex:  seriesIndexFrom1,
 			MathJax:      blog.Meta.MathJax,
 			SeriesDir:    s.conf.SeriesDir,
 			Analytics:    s.conf.Analytics,
 			Url:          s.conf.Url,
+
+			NextPostUri:   nextPostUri,
+			NextPostTitle: nextPostTitle,
+			PrevPostUri:   prevPostUri,
+			PrevPostTitle: prevPostTitle,
 		}
 
 		if err := postTmpl.Execute(postF, data); err != nil {

@@ -8,14 +8,14 @@ series: BitTorrent 协议实现小记
 
 首先是几个开源项目的分析：
 
-`Go` 实现的 [torrent-client](https://github.com/veggiedefender/torrent-client/)，只实现了 [BEP3](https://bittorrent.org/beps/bep_0003.html)，并且还存在错误的假设 Tracker 都会主动返回 Bitfield 响应。但优点是代码结构还算比较清晰，加上 `Go` 的并发比较方便，并发的逻辑不会太干扰主流程的理解。
+`Go` 实现的 [torrent-client](https://github.com/veggiedefender/torrent-client/)，只实现了 [BEP-3](https://bittorrent.org/beps/bep_0003.html)，并且还存在错误的假设 Tracker 都会主动返回 Bitfield 响应。但优点是代码结构还算比较清晰，加上 `Go` 的并发比较方便，并发的逻辑不会太干扰主流程的理解。
 
-`Python` 实现的 [pieces](https://github.com/eliasson/pieces)，也是只实现了 [BEP3](https://bittorrent.org/beps/bep_0003.html)，协议交互上没太大问题。问题主要是源码实现有点绕，在块下载管理器和底层协议上代码混在了一起，没有做好分层。这么实现固然能在当时的 `asyncio` 框架上做到比较高效，但我怀疑之后会非常难以扩展其他 BEP 协议？
+`Python` 实现的 [pieces](https://github.com/eliasson/pieces)，也是只实现了 [BEP-3](https://bittorrent.org/beps/bep_0003.html)，协议交互上没太大问题。问题主要是源码实现有点绕，在块下载管理器和底层协议上代码混在了一起，没有做好分层。这么实现固然能在当时的 `asyncio` 框架上做到比较高效，但我怀疑之后会非常难以扩展其他 BEP 协议？
 
 `Elixir` 实现的 [torrex](https://github.com/ryotsu/torrex)，和上面两个差不多。
 
 总的来说，这几个项目，都不实用：
-1. 只实现了 [BEP3](https://bittorrent.org/beps/bep_0003.html) ，用这个协议能找到的 peers 很有限，下载速度提升不上去。
+1. 只实现了 [BEP-3](https://bittorrent.org/beps/bep_0003.html) ，用这个协议能找到的 peers 很有限，下载速度提升不上去。
 2. 没有考虑多文件的情况。
 
 以上只是我的抱怨，或许我该去参考参考较完善的开源项目:

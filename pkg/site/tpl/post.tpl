@@ -267,6 +267,17 @@
   @media only screen and (min-width: 480px) and (max-width: 639px) { .main { width: 420px; } }
   @media only screen and (max-width: 479px) { .main { width: 90%; } }
 
+  .pager {display: flex;margin-bottom: 20px}
+  .pager:last-of-type {margin-top: 50px;}
+
+  .pager span, .pager   a {flex: 50%;line-height:50px;}
+  .pager a {color: var(--pager-fg); padding: 0 10px; border-radius: 4px; border: 1px solid #ccc; text-decoration: none; }
+  .pager a:hover{background: var(--pager-hover); border-color: #bbb;}
+  .pager .prev {margin-right: 10px;}
+  .pager a.prev:not(:empty):before{content: '« '}
+  .pager a.next:not(:empty):after{content: ' »'}
+  .pager .next {text-align: right;margin-left: 10px}
+
 </style>
 <link rel="stylesheet" href="/libs/highlight/styles/a11y-dark.min.css">
 <script src="/libs/highlight/highlight.min.js"></script>
@@ -297,6 +308,23 @@
     {{.Body}}
   </div>
 
+    {{if .IsSeries}}
+    <div class="pager">
+
+      {{if ne .PrevPostUri "" }}
+        <a class="prev" href="{{.PrevPostUri}}">
+          {{.PrevPostTitle}}
+        </a>
+      {{end}}
+
+      {{if ne .NextPostUri "" }}
+        <a class="next" href="{{.NextPostUri}}">
+          {{.NextPostTitle}}
+        </a>
+      {{end}}
+
+    </div>
+    {{end}}
   <div class="icp"> lyyyuna <a href="https://beian.miit.gov.cn/" target="_blank" rel="nofollow">沪ICP备2025110782号-1</a></div>
 </div>
 

@@ -27,15 +27,15 @@ type Blog struct {
 }
 
 type BlogMeta struct {
-	Title    string    `yaml:"title"`
-	DateS    string    `yaml:"date"`
-	Category string    `yaml:"categories"`
-	Series   string    `yaml:"series"`
-	Date     time.Time `yaml:"-"`
-	DateT    string    `yaml:"-"`
-	IsSeries bool      `yaml:"-"`
-	Summary  string    `yaml:"summary"`
-	MathJax  bool      `yaml:"mathjax"`
+	Title      string    `yaml:"title"`
+	DateS      string    `yaml:"date"`
+	Category   string    `yaml:"categories"`
+	SeriesName string    `yaml:"series"`
+	Date       time.Time `yaml:"-"`
+	DateT      string    `yaml:"-"`
+	IsSeries   bool      `yaml:"-"`
+	Summary    string    `yaml:"summary"`
+	MathJax    bool      `yaml:"mathjax"`
 }
 
 func NewBlog(path string) *Blog {
@@ -75,7 +75,7 @@ func (b *Blog) parseMetaData() {
 		log.Fatalf("some blog meta is empty: %v", b.filePath)
 	}
 
-	if meta.Series == "" {
+	if meta.SeriesName == "" {
 		meta.IsSeries = false
 	} else {
 		meta.IsSeries = true

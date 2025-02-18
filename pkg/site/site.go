@@ -80,7 +80,7 @@ func NewGenerate(conf *config.Config) *Site {
 
 	// get series
 	for _, blog := range blogs {
-		series := blog.Meta.Series
+		series := blog.Meta.SeriesName
 		if series == "" {
 			continue
 		}
