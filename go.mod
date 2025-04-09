@@ -8,7 +8,7 @@ require (
 	github.com/panjf2000/ants/v2 v2.4.6
 	github.com/snabb/sitemap v1.0.0
 	github.com/spf13/cobra v1.2.1
-	github.com/yuin/goldmark v1.4.0
+	github.com/yuin/goldmark v1.7.8
 	gopkg.in/yaml.v2 v2.4.0
 )
 
