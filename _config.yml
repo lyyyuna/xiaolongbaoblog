@@ -19,6 +19,7 @@ series_dir: series
 # analytics
 analytics:
   >
+  <div id="stats" class="icp"></div>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-1G7RNXMWQX"></script>
   <script>
@@ -28,6 +29,7 @@ analytics:
 
     gtag('config', 'G-1G7RNXMWQX');
   </script>
+  <script async src="https://analytics.lyyyuna.com/v1/stats.js"></script>
 
 deploy:
 - type: git
