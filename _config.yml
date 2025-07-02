@@ -16,6 +16,8 @@ about_dir: about
 output_dir: output
 series_dir: series
 
+index_now: fb77cde40e164bd691802d167948c46f
+
 # analytics
 analytics:
   >

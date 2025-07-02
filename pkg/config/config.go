@@ -26,6 +26,8 @@ type Config struct {
 
 	Deploys   []Deploy `yaml:"deploy"`
 	Analytics string   `yaml:"analytics"`
+
+	IndexNow string `yaml:"index_now"`
 }
 
 type Deploy struct {
