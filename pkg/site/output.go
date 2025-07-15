@@ -345,3 +345,34 @@ func (s *Site) outputSitemap(lpath string) {
 
 	log.Println("生成 sitemap")
 }
+
+func (s *Site) outputRewriteImgs(outputDir string) {
+	postDir := filepath.Join(".", s.conf.SourceDir, s.conf.PostDir)
+
+	for _, blog := range s.Blogs {
+		if blog.dirSeries == "" {
+			continue
+		}
+
+		for oriImgSrc, rewriteImgSrc := range blog.rewriteImgPath {
+			oriImgPath := filepath.Join(postDir, oriImgSrc)
+			rewriteImgPath := filepath.Join(outputDir, rewriteImgSrc)
+
+			oriImgBytes, err := os.ReadFile(oriImgPath)
+			if err != nil {
+				log.Fatalf("fail to read the ori img: %v, err: %v", oriImgPath, err)
+			}
+
+			rewriteImgDir := filepath.Dir(rewriteImgPath)
+			err = os.MkdirAll(rewriteImgDir, os.ModePerm)
+			if err != nil {
+				log.Fatalf("fail to create the rewrite img dir: %v, err: %v", rewriteImgDir, err)
+			}
+
+			err = os.WriteFile(rewriteImgPath, oriImgBytes, os.ModePerm)
+			if err != nil {
+				log.Fatalf("fail to write the rewrite img: %v, err: %v", rewriteImgPath, err)
+			}
+		}
+	}
+}

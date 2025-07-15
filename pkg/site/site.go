@@ -13,9 +13,8 @@ import (
 )
 
 type Site struct {
-	Blogs      []*Blog
-	Categories map[string][]*Blog
-	Series     map[string][]*Blog
+	Blogs  []*Blog
+	Series map[string][]*Blog
 
 	conf    *config.Config
 	AboutMe *About
@@ -36,6 +35,28 @@ func NewGenerate(conf *config.Config) *Site {
 
 	for _, post := range posts {
 		if post.IsDir() {
+			dname := post.Name()
+			dpath := filepath.Join(postDir, dname)
+			post2s, err := os.ReadDir(dpath)
+			if err != nil {
+				log.Fatalf("fail to read the posts from the dir: %v", err)
+			}
+			for _, post2 := range post2s {
+				fname := post2.Name()
+
+				if !strings.HasSuffix(fname, ".md") {
+					continue
+				}
+
+				// 如果名字是 -xxxx，跳过（草稿）
+				if strings.HasPrefix(fname, "-") {
+					continue
+				}
+
+				blog := NewBlog(filepath.Join(dpath, fname), dname)
+				blogs = append(blogs, blog)
+			}
+
 			continue
 		}
 
@@ -47,7 +68,7 @@ func NewGenerate(conf *config.Config) *Site {
 
 		wg.Add(1)
 		ants.Submit(func() {
-			blog := NewBlog(filepath.Join(postDir, fname))
+			blog := NewBlog(filepath.Join(postDir, fname), "")
 			m.Lock()
 			defer m.Unlock()
 			blogs = append(blogs, blog)
@@ -60,22 +81,10 @@ func NewGenerate(conf *config.Config) *Site {
 	sort.Sort(byBlogDate(blogs))
 
 	s := &Site{
-		Blogs:      blogs,
-		Categories: make(map[string][]*Blog),
-		Series:     make(map[string][]*Blog),
-		conf:       conf,
-		AboutMe:    NewAbout(filepath.Join(".", conf.SourceDir, conf.AboutDir, "index.md")),
-	}
-
-	// get categories
-	for _, blog := range blogs {
-		category := blog.Meta.Category
-		_, ok := s.Categories[category]
-		if !ok {
-			s.Categories[category] = []*Blog{blog}
-		} else {
-			s.Categories[category] = append(s.Categories[category], blog)
-		}
+		Blogs:   blogs,
+		Series:  make(map[string][]*Blog),
+		conf:    conf,
+		AboutMe: NewAbout(filepath.Join(".", conf.SourceDir, conf.AboutDir, "index.md")),
 	}
 
 	// get series
@@ -116,6 +125,7 @@ func (s *Site) Output() {
 	s.outputStatic(outputDir)
 	// write series
 	s.outputSeries(outputDir)
+	s.outputRewriteImgs(outputDir)
 	// write about me
 	s.outputAboutMe(outputDir)
 	// write atom/rss feed

@@ -10,6 +10,8 @@ import (
 	"strings"
 	"time"
 
+	"regexp"
+
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/extension"
 	"github.com/yuin/goldmark/renderer/html"
@@ -25,6 +27,9 @@ type Blog struct {
 	rawContent      []byte
 	markdownContent []byte
 	htmlContent     string
+
+	dirSeries      string
+	rewriteImgPath map[string]string
 }
 
 type BlogMeta struct {
@@ -39,7 +44,7 @@ type BlogMeta struct {
 	MathJax    bool      `yaml:"mathjax"`
 }
 
-func NewBlog(path string) *Blog {
+func NewBlog(path string, dirSeries string) *Blog {
 	rawContent, err := os.ReadFile(path)
 	if err != nil {
 		log.Fatalf("fail to read blog post file: %v", err)
@@ -47,9 +52,11 @@ func NewBlog(path string) *Blog {
 
 	uri := strings.Split(filepath.Base(path), ".")[0]
 	b := &Blog{
-		rawContent: rawContent,
-		filePath:   path,
-		Uri:        uri,
+		rawContent:     rawContent,
+		filePath:       path,
+		Uri:            uri,
+		dirSeries:      dirSeries,
+		rewriteImgPath: make(map[string]string),
 	}
 	b.parse()
 	return b
@@ -57,6 +64,7 @@ func NewBlog(path string) *Blog {
 
 func (b *Blog) parse() {
 	b.parseMetaData()
+	b.rewriteSeries()
 	b.parseMarkdown()
 }
 
@@ -74,6 +82,10 @@ func (b *Blog) parseMetaData() {
 
 	if meta.DateS == "" || meta.Title == "" {
 		log.Fatalf("some blog meta is empty: %v", b.filePath)
+	}
+
+	if b.dirSeries != "" {
+		meta.SeriesName = b.dirSeries
 	}
 
 	if meta.SeriesName == "" {
@@ -117,4 +129,43 @@ func (b *Blog) parseMarkdown() {
 
 func (b *Blog) String() string {
 	return fmt.Sprintf("meta: %v, filepath: %v, uri: %v, html: %v", b.Meta, b.filePath, b.Uri, b.htmlContent)
+}
+
+func (b *Blog) rewriteSeries() {
+	// 只替换目录 series 类型
+	if b.dirSeries == "" {
+		return
+	}
+
+	// 正则表达式匹配 Markdown 图片语法 ![alt](src)
+	re := regexp.MustCompile(`!\[([^\]]*)\]\(([^)]+)\)`)
+
+	b.markdownContent = re.ReplaceAllFunc(b.markdownContent, func(match []byte) []byte {
+		parts := re.FindStringSubmatch(string(match))
+		if len(parts) < 3 {
+			return match
+		}
+
+		altText := parts[1]
+		imgSrc := parts[2]
+
+		oriImgSrc := b.dirSeries + "/" + imgSrc
+
+		// 如果图片路径是相对路径（以 ./ 或 ../ 开头，或者不是 http:// 或 https:// 开头）
+		if !strings.HasPrefix(imgSrc, "http://") &&
+			!strings.HasPrefix(imgSrc, "https://") &&
+			!strings.HasPrefix(imgSrc, "/") {
+
+			// 确保路径不以 / 开头
+			if after, ok := strings.CutPrefix(imgSrc, "./"); ok {
+				imgSrc = after
+			}
+
+			// 添加基础 URL
+			imgSrc = "/imgrrr/" + b.dirSeries + "/" + imgSrc
+			b.rewriteImgPath[oriImgSrc] = imgSrc
+		}
+
+		return []byte(fmt.Sprintf("![%s](%s)", altText, imgSrc))
+	})
 }
