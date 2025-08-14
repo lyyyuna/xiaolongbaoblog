@@ -32,7 +32,7 @@
   body {
     padding: 0;
     margin: 0;
-    font-size: 100%;
+    font-size: 112.5%;
     font-family: serif;
   }
   @media print {
