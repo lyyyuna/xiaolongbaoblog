@@ -15,9 +15,7 @@ summary: 开源一个动态星云生成软件
 
 | **平台**	 | **链接** |
 |-------|-------|
-| Mac ARM  |  [点击下载](https://analytics.lyyyuna.com/v1/download/r2tPZqodkoXSh6fU) |
-| Mac Intel  |  [点击下载](https://analytics.lyyyuna.com/v1/download/X8SAg2XVJ5ckQ48X) |
-| Windows  |  [点击下载](https://analytics.lyyyuna.com/v1/download/0ZVS4d7rMuDxFYlB)  |
+| Mac | [点击下载](https://analytics.lyyyuna.com/v1/download/ws3JiR5g3YYUTISg) |
 
 ## 软件截图
 
