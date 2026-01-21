@@ -251,6 +251,12 @@
   .toc-summary {
     margin-left: 2em;
   }
+  .post-summary {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    margin: 0.5em 0 1.5em;
+  }
   .favorite {
     font-weight: bold;
   }
@@ -313,11 +319,12 @@
     </h1>
     <div class="normal">
       <div class="when">
-        
+
           发表于 {{.When}}
-          
+
       </div>
     </div>
+    {{if .Summary}}<div class="post-summary">{{.Summary}}</div>{{end}}
     {{.Body}}
   </div>
 

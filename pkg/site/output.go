@@ -122,6 +122,7 @@ func (s *Site) outputPost(path string) {
 			SeriesDir    string
 			Analytics    string
 			Url          string
+			Summary      string
 
 			NextPostUri   string
 			NextPostTitle string
@@ -141,6 +142,7 @@ func (s *Site) outputPost(path string) {
 			SeriesDir:    s.conf.SeriesDir,
 			Analytics:    s.conf.Analytics,
 			Url:          s.conf.Url,
+			Summary:      blog.Meta.Summary,
 
 			NextPostUri:   nextPostUri,
 			NextPostTitle: nextPostTitle,
