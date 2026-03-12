@@ -169,8 +169,8 @@ open http://127.0.0.1:7778
 
 ## gococo vs Alternatives
 
-| | go test -cover | goc | gococo |
-|---|---|---|---|
+|  | go test -cover | goc                          | gococo                  |
+|-------|-------|-------|-------|
 | Coverage timing | After exit | On-demand (pull) | Real-time (push) |
 | Visualization | HTML report | coverprofile output | Live Web UI |
 | init/main coverage | Yes | May miss | Counter snapshot |

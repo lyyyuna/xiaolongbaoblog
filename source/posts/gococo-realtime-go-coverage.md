@@ -215,8 +215,8 @@ open http://127.0.0.1:7778
 
 ## gococo vs goc
 
-| | goc | gococo |
-|---|---|---|
+|  | goc                          | gococo                  |
+|-------|-------|-------|
 | 覆盖率获取 | 拉模式（HTTP API 轮询） | 推模式（流式事件） |
 | 可视化 | 无（输出 coverprofile） | 内置 Web UI，实时高亮 |
 | init/main 覆盖 | 可能遗漏 | 计数器快照捕获 |
